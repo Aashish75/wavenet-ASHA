@@ -1,0 +1,24 @@
+name: ngramwavenet_pytorch
+project: randomproject
+workspace: randomidentikey
+hyperparameters:
+  n_embed: 64
+  embed_weight_data: 0.1
+  block_size: 8
+  dropout1: 0.25
+  dropout2: 0.05
+  dropout3: 0.25
+  n_hidden: 128
+  linear_weight_data: 0.1
+  learning_rate: 0.1
+  lr_momentum: 0.009
+  lr_weight_decay: 0.001
+searcher:
+  name: single
+  metric: validation_loss
+  max_length:
+      batches: 100000  # approximately 1 epoch
+  smaller_is_better: true
+resources:
+  resource_pool: gpu
+entrypoint: python3 train.py
